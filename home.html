@@ -1,0 +1,69 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clout</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 40px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background: white;
+            color: #1e3c72;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #ffdd57;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to the Home Page</h1>
+
+    <div class="btn-container">
+        <button class="btn" onclick="goTo('maths.html')">Maths</button>
+        <button class="btn" onclick="goTo('pics.html')">Pics</button>
+        <button class="btn" onclick="goTo('vid.html')">Vids</button>
+    </div>
+
+    <script>
+        function goTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</body>
+</html>
