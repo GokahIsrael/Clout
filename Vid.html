@@ -1,0 +1,181 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clout</title>
+    <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#search-input {
+    width: 50%;
+    height: 40px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+button[type="submit"] {
+    width: 100px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video {
+    margin: 20px;
+    width: 300px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.video:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Clout</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search videos...">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main id="video-container">
+        <!-- Videos will be displayed here -->
+    </main>
+
+    <script>
+    const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Get your API key from YouTube
+const apiUrl = `https:                                                        
+const videoContainer = document.getElementById('video-container');
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+        fetchVideos(searchTerm);
+    }
+});
+
+async function fetchVideos(query) {
+    try {
+        const response = await fetch(`//www.googleapis.com/youtube/v3/search?part=snippet&q=`;
+const videoContainer = document.getElementById('video-container');
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+        fetchVideos(searchTerm);
+    }
+});
+
+async function fetchVideos(query) {
+    try {
+        const response = await fetch(`${apiUrl}${query}&maxResults=30&key=${apiKey}`);
+        const data = await response.json();
+        const videos = data.items;
+        displayVideos(videos);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function displayVideos(videos) {
+    videoContainer.innerHTML = '';
+    videos.forEach((video) => {
+        const videoElement = document.createElement('div');
+        videoElement.classList.add('video');
+        videoElement.innerHTML = `function displayVideos(videos) {
+    videoContainer.innerHTML = '';
+    videos.forEach((video) => {
+        const videoElement = document.createElement('div');
+        videoElement.classList.add('video');
+        videoElement.innerHTML = `
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe>
+            <h3>${video.snippet.title}</h3>
+        `;
+        videoContainer.appendChild(videoElement);
+    });
+}
+
+// AI-powered recommendation system (simple example)
+function recommendVideos(videos) {
+    // Analyze video titles and descriptions
+    const keywords = [];
+    videos.forEach((video) => {
+        const title = video.snippet.title.toLowerCase();
+        const description = video.snippet.description.toLowerCase();
+        const words = title + ' ' + description;
+        keywords.push(...words.split(' '));
+    });
+
+    // Count keyword frequency
+    const keywordFrequency = {};
+    keywords.forEach((keyword) => {
+        if (keywordFrequency[keyword]) {
+            keywordFrequency[keyword]++;
+        } else {
+            keywordFrequency[keyword] = 1;
+        }
+    });
+
+    // Recommend videos based on keyword frequency
+    const recommendedVideos = [];
+    videos.forEach((video) => {
+        const title = video.snippet.title.toLowerCase();
+        const description = video.snippet.description.toLowerCase();
+        const words = title + ' ' + description;
+        const score = words.split(' ').reduce((acc, word) => {
+            return acc + (keywordFrequency[word] || 0);
+        }, 0);
+        recommendedVideos.push({ video, score });
+    });
+
+    // Sort recommended videos by score
+    recommendedVideos.sort((a, b) => b.score - a.score);
+
+    return recommendedVideos.map((recommendedVideo) => recommendedVideo.video);
+}
+
+// Fetch videos on page load
+fetchVideos('latest');
+    </script>
+</body>
+</html>
